@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const { execFile } = require('child_process');
 
+const APP_ID = 'com.shortcutapp.launcher';
+
 let win;
 let appShortcuts = [];
 const iconCache = new Map();
@@ -368,6 +370,10 @@ function createWindow() {
 }
 
 app.whenReady().then(async () => {
+  if (process.platform === 'win32') {
+    app.setAppUserModelId(APP_ID);
+  }
+
   if (process.platform === 'darwin' && app.dock && fs.existsSync(appIconPath)) {
     app.dock.setIcon(appIconPath);
   }

@@ -1,6 +1,6 @@
 {
   "name": "shortcut-app",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A keyboard-first quick search and app launcher for Windows/ Mac.",
   "main": "main.js",
   "scripts": {
@@ -66,7 +66,10 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
+      "createStartMenuShortcut": true,
+      "installerIcon": "assets/app-icon.ico",
+      "uninstallerIcon": "assets/app-icon.ico",
+      "installerHeaderIcon": "assets/app-icon.ico"
     }
   }
 }
