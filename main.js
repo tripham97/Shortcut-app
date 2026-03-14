@@ -6,8 +6,8 @@ const { execFile } = require('child_process');
 let win;
 let appShortcuts = [];
 const iconCache = new Map();
-const appIconPath = process.platform === 'darwin'
-  ? path.join(__dirname, 'assets', 'app-icon.png')
+const appIconPath = process.platform === 'win32'
+  ? path.join(__dirname, 'assets', 'app-icon.ico')
   : path.join(__dirname, 'assets', 'app-icon.png');
 
 function walkShortcuts(dir, items = []) {

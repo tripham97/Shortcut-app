@@ -1,6 +1,6 @@
 {
   "name": "shortcut-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A keyboard-first quick search and app launcher for Windows/ Mac.",
   "main": "main.js",
   "scripts": {
@@ -38,7 +38,7 @@
       "package.json"
     ],
     "win": {
-      "icon": "assets/app-icon.png",
+      "icon": "assets/app-icon.ico",
       "signAndEditExecutable": false,
       "target": [
         {
