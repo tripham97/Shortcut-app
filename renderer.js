@@ -2,6 +2,7 @@ const input = document.getElementById('searchInput');
 const suggestions = document.getElementById('appSuggestions');
 let appResults = [];
 let selectedIndex = 0;
+const GRID_MIN_TILE_WIDTH = 110;
 
 function isAppCommand(value) {
   return value.trim().toLowerCase().startsWith('/app');
@@ -13,8 +14,8 @@ function getAppQuery(value) {
 
 function updateWindowHeight() {
   const expanded = !suggestions.hidden;
-  const baseHeight = 96;
-  const expandedHeight = Math.min(320, Math.max(baseHeight, suggestions.scrollHeight + 68));
+  const baseHeight = 148;
+  const expandedHeight = Math.max(baseHeight, suggestions.scrollHeight + 68);
   window.electronAPI.setWindowHeight(expanded ? expandedHeight : baseHeight);
 }
 
@@ -48,10 +49,25 @@ function renderSuggestions() {
     const item = document.createElement('button');
     item.type = 'button';
     item.className = 'suggestion-item';
+    item.title = result.name;
     if (index === selectedIndex) {
       item.classList.add('active');
     }
-    item.textContent = result.name;
+
+    const icon = document.createElement('img');
+    icon.className = 'suggestion-icon';
+    icon.alt = '';
+    if (result.icon) {
+      icon.src = result.icon;
+    } else {
+      icon.hidden = true;
+    }
+
+    const label = document.createElement('span');
+    label.className = 'suggestion-label';
+    label.textContent = result.name;
+
+    item.append(icon, label);
     item.addEventListener('click', () => {
       void launchSelectedApp(index);
     });
@@ -65,6 +81,11 @@ function renderSuggestions() {
   if (activeItem) {
     activeItem.scrollIntoView({ block: 'nearest' });
   }
+}
+
+function getGridColumnCount() {
+  const width = suggestions.clientWidth || GRID_MIN_TILE_WIDTH;
+  return Math.max(1, Math.floor(width / GRID_MIN_TILE_WIDTH));
 }
 
 async function refreshAppSuggestions() {
@@ -84,16 +105,30 @@ input.addEventListener('input', () => {
 
 input.addEventListener('keydown', (e) => {
   if (isAppCommand(input.value) && !suggestions.hidden) {
-    if (e.key === 'ArrowDown') {
+    if (e.key === 'ArrowRight') {
       e.preventDefault();
       selectedIndex = (selectedIndex + 1) % appResults.length;
       renderSuggestions();
       return;
     }
 
-    if (e.key === 'ArrowUp') {
+    if (e.key === 'ArrowLeft') {
       e.preventDefault();
       selectedIndex = (selectedIndex - 1 + appResults.length) % appResults.length;
+      renderSuggestions();
+      return;
+    }
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      selectedIndex = Math.min(appResults.length - 1, selectedIndex + getGridColumnCount());
+      renderSuggestions();
+      return;
+    }
+
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      selectedIndex = Math.max(0, selectedIndex - getGridColumnCount());
       renderSuggestions();
       return;
     }

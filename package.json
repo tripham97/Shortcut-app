@@ -6,7 +6,9 @@
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "dist:mac": "xattr -cr assets index.html main.js package.json preload.js renderer.js styles.css && electron-builder --mac dmg zip",
+    "dist:win": "electron-builder --win nsis"
   },
   "keywords": [
     "electron",
@@ -27,6 +29,7 @@
       "output": "release"
     },
     "files": [
+      "assets/**/*",
       "index.html",
       "main.js",
       "preload.js",
@@ -35,6 +38,7 @@
       "package.json"
     ],
     "win": {
+      "icon": "assets/app-icon.png",
       "signAndEditExecutable": false,
       "target": [
         {
@@ -44,6 +48,19 @@
           ]
         }
       ]
+    },
+    "mac": {
+      "icon": "assets/app-icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.productivity",
+      "entitlements": "build-resources/entitlements.mac.plist",
+      "entitlementsInherit": "build-resources/entitlements.mac.inherit.plist",
+      "gatekeeperAssess": false,
+      "hardenedRuntime": true,
+      "notarize": true
     },
     "nsis": {
       "oneClick": false,
