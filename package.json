@@ -1,0 +1,55 @@
+{
+  "name": "shortcut-app",
+  "version": "1.0.0",
+  "description": "A keyboard-first quick search and app launcher for Windows/ Mac.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "keywords": [
+    "electron",
+    "launcher",
+    "search",
+    "windows"
+  ],
+  "author": "Lemontri",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^41.0.2",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.shortcutapp.launcher",
+    "productName": "Shortcut App",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "index.html",
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "styles.css",
+      "package.json"
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

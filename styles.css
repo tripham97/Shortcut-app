@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;600&display=swap");
+
+:root {
+    --panel: rgba(255, 255, 255, 0.14);
+    --panel-border: rgba(255, 255, 255, 0.28);
+    --panel-highlight: rgba(255, 255, 255, 0.22);
+    --text-main: rgba(255, 255, 255, 0.96);
+    --text-muted: rgba(255, 255, 255, 0.62);
+    --input-bg: rgba(255, 255, 255, 0.10);
+    --input-border: rgba(255, 255, 255, 0.22);
+    --input-text: rgba(255, 255, 255, 0.96);
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.20);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: transparent;
+    color: var(--text-main);
+    font-family: "Space Mono", Georgia, serif;
+    overflow: hidden;
+}
+
+.container {
+    -webkit-app-region: drag;
+    position: relative;
+    margin: 14px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    background: var(--panel);
+    box-shadow:
+        inset 0 1px 0 var(--panel-highlight),
+        var(--shadow);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.22),
+        rgba(255, 255, 255, 0.04)
+    );
+    opacity: 0.9;
+}
+
+input {
+    -webkit-app-region: no-drag;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--input-border);
+    outline: none;
+    background: var(--input-bg);
+    color: var(--input-text);
+    font-family: "Space Mono", Georgia, serif;
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transition: box-shadow 140ms ease, border-color 140ms ease, background-color 140ms ease;
+}
+
+input:focus {
+    border-color: rgba(255, 255, 255, 0.42);
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 0 0 3px rgba(255, 255, 255, 0.10);
+}
+
+input::placeholder {
+    color: var(--text-muted);
+}
+
+.suggestions {
+    -webkit-app-region: no-drag;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    gap: 6px;
+    max-height: 208px;
+    overflow-y: auto;
+    padding-right: 2px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.28) transparent;
+}
+
+.suggestions::-webkit-scrollbar {
+    width: 8px;
+}
+
+.suggestions::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.24);
+}
+
+.suggestions::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.34);
+}
+
+.suggestion-item {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--input-text);
+    font: inherit;
+    font-family: "Space Mono", Georgia, serif;
+    font-size: 25px;
+    text-align: left;
+    cursor: pointer;
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+}
+
+.suggestion-item.active,
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.28);
+}
