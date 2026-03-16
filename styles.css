@@ -30,8 +30,6 @@ body {
     position: fixed;
     inset: 0;
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(28px) saturate(165%);
-    -webkit-backdrop-filter: blur(28px) saturate(165%);
     pointer-events: none;
 }
 

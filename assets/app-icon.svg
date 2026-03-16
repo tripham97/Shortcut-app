@@ -1,22 +1,16 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1024" height="1024" rx="224" fill="url(#bg)"/>
-  <rect x="84" y="84" width="856" height="856" rx="180" fill="url(#glass)" fill-opacity="0.18" stroke="rgba(255,255,255,0.32)"/>
-  <path d="M280 334C280 304.177 304.177 280 334 280H690C719.823 280 744 304.177 744 334V690C744 719.823 719.823 744 690 744H334C304.177 744 280 719.823 280 690V334Z" fill="rgba(255,255,255,0.08)"/>
-  <path d="M392 380C392 366.745 402.745 356 416 356H608C621.255 356 632 366.745 632 380V426C632 439.255 621.255 450 608 450H416C402.745 450 392 439.255 392 426V380Z" fill="white" fill-opacity="0.92"/>
-  <path d="M392 506C392 492.745 402.745 482 416 482H538C551.255 482 562 492.745 562 506V552C562 565.255 551.255 576 538 576H416C402.745 576 392 565.255 392 552V506Z" fill="white" fill-opacity="0.78"/>
-  <path d="M586 482H632V576H586V482Z" fill="#F8F1E7"/>
-  <path d="M392 602C392 588.745 402.745 578 416 578H608C621.255 578 632 588.745 632 602V648C632 661.255 621.255 672 608 672H416C402.745 672 392 661.255 392 648V602Z" fill="#F4B400"/>
-  <path d="M720 318L768 366L538 596L490 548L720 318Z" fill="#FF7A59"/>
-  <circle cx="738" cy="348" r="30" fill="#FFF4E8"/>
+  <rect width="1024" height="1024" rx="232" fill="url(#bg)"/>
+  <rect x="186" y="186" width="652" height="652" rx="148" fill="url(#panel)" stroke="rgba(255,255,255,0.22)" stroke-width="14"/>
+  <circle cx="478" cy="478" r="142" stroke="white" stroke-width="56"/>
+  <path d="M586 586L700 700" stroke="white" stroke-width="64" stroke-linecap="round"/>
   <defs>
-    <linearGradient id="bg" x1="154" y1="112" x2="862" y2="912" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0D3B66"/>
-      <stop offset="0.5" stop-color="#1E6F5C"/>
-      <stop offset="1" stop-color="#F95738"/>
+    <linearGradient id="bg" x1="136" y1="116" x2="888" y2="920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10243E"/>
+      <stop offset="1" stop-color="#1E6F5C"/>
     </linearGradient>
-    <linearGradient id="glass" x1="196" y1="132" x2="836" y2="860" gradientUnits="userSpaceOnUse">
-      <stop stop-color="white" stop-opacity="0.34"/>
-      <stop offset="1" stop-color="white" stop-opacity="0.04"/>
+    <linearGradient id="panel" x1="234" y1="214" x2="776" y2="804" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="white" stop-opacity="0.10"/>
     </linearGradient>
   </defs>
 </svg>

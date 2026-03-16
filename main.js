@@ -352,6 +352,9 @@ function createWindow() {
     frame: false,
     resizable: false,
     transparent: true,
+    vibrancy: process.platform === 'darwin' ? 'under-window' : undefined,
+    visualEffectState: process.platform === 'darwin' ? 'active' : undefined,
+    backgroundColor: process.platform === 'darwin' ? '#00000000' : undefined,
     icon: fs.existsSync(appIconPath) ? appIconPath : undefined,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
